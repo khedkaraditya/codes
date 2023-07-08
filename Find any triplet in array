@@ -1,0 +1,23 @@
+def find_triplet(arr, X):
+    N = len(arr)
+    for i in range(N - 2):
+        target = X - arr[i]
+        complement_set = set()
+
+        for j in range(i + 1, N):
+            complement = target - arr[j]
+            if complement in complement_set:
+                return 1  # Triplet found
+
+            complement_set.add(arr[j])
+
+    return 0  # No triplet found
+
+# Read input
+N = int(input())
+X = int(input())
+arr = list(map(int, input().split()))
+
+# Check if triplet exists and print the result
+result = find_triplet(arr, X)
+print(result)
