@@ -1,0 +1,29 @@
+def binary_sum(string1, string2):
+    n = max(len(string1), len(string2))
+    string1 = string1.zfill(n)
+    string2 = string2.zfill(n)
+    carry = 0
+    result = []
+
+    for i in range(n - 1, -1, -1):
+        bit1 = int(string1[i])
+        bit2 = int(string2[i])
+        temp = bit1 + bit2 + carry
+        sum_bit = temp % 2
+        carry = temp // 2
+        result.append(str(sum_bit))
+
+    if carry:
+        result.append(str(carry))
+
+    return ''.join(result[::-1])
+
+# Read input strings
+string1 = input().strip()
+string2 = input().strip()
+
+# Calculate the sum of the binary strings
+sum_string = binary_sum(string1, string2)
+
+# Print the result
+print(sum_string)
